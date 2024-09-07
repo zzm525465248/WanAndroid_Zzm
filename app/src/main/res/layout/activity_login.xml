@@ -10,17 +10,127 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/shape_bg_gradient">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/bottom"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/bg_shape"
+            android:text="登录"
+            app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword"
+            app:layout_constraintStart_toStartOf="@+id/editTextTextPassword"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="90dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@mipmap/img" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="50dp"
+            android:text="登录体验更多精彩"
+            android:textColor="@color/black"
+            android:textSize="22dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="120dp"
+            android:background="@drawable/edit_shape"
+            android:hint="请输入账户"
+            android:inputType="textPersonName"
+            android:text="zzm525465248qaq"
+            android:textColor="@color/black"
+            android:textColorHint="#B2B2B2"
+            app:layout_constraintEnd_toEndOf="@+id/textView"
+            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="9dp"
+            app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName"
+            app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
+            app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName"
+            app:srcCompat="@mipmap/zh" />
+
+        <EditText
+            android:id="@+id/editTextTextPassword"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/edit_shape"
+            android:hint="请输入密码"
+            android:inputType="textPassword"
+            android:text="123456"
+            android:textColor="@color/black"
+            android:textColorHint="#B2B2B2"
+            app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
+            app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            app:layout_constraintBottom_toBottomOf="@+id/editTextTextPassword"
+            app:layout_constraintEnd_toEndOf="@+id/imageView2"
+            app:layout_constraintStart_toStartOf="@+id/imageView2"
+            app:layout_constraintTop_toTopOf="@+id/editTextTextPassword"
+            app:srcCompat="@mipmap/mm" />
+
+        <ImageView
+            android:id="@+id/imgPdDisplay"
+            android:layout_width="22dp"
+            android:layout_height="21dp"
+            android:layout_marginEnd="16dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/editTextTextPassword"
+            app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword"
+            app:layout_constraintTop_toTopOf="@+id/editTextTextPassword"
+            app:srcCompat="@drawable/bkj" />
+
+        <TextView
+            android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="159dp"
-            android:layout_marginEnd="130dp"
-            android:text="Button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="注册账号"
+            android:textSize="@dimen/like_text"
+            android:textColor="@color/liek_color"
+            app:layout_constraintBottom_toBottomOf="@+id/checkBox"
+            app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword"
+            app:layout_constraintTop_toTopOf="@+id/checkBox" />
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="记住密码"
+            android:textSize="@dimen/like_text"
+            app:layout_constraintStart_toStartOf="@+id/editTextTextPassword"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

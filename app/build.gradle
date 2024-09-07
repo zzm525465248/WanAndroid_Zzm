@@ -1,7 +1,10 @@
 plugins {
     id 'com.android.application'
+
+    id 'com.mob.sdk'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-parcelize'
+
 }
 
 android {
@@ -31,6 +34,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    apply plugin: "kotlin-kapt"
     buildFeatures {
         dataBinding = true
         viewBinding = true
@@ -58,5 +62,46 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
     implementation  "com.tencent:mmkv:1.2.15"
+    //内存泄漏
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.0-beta-3'
+    //rv库
+    implementation 'com.github.liangjingkanji:BRV:1.6.0'
+    //Glide图片加载库
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    implementation 'com.github.bumptech.glide:compiler:4.9.0'
 
+    //Banner
+    implementation 'io.github.youth5201314:banner:2.2.3'
+    //Evenbus
+    def eventbus_version = '3.2.0'
+    implementation "org.greenrobot:eventbus:$eventbus_version"
+    kapt "org.greenrobot:eventbus-annotation-processor:$eventbus_version"
+}
+
+kapt {
+    arguments {
+        arg('eventBusIndex', 'com.have.a.good.MyEventBusAppIndex')
+    }
+}
+
+MobSDK {
+    appKey "3a1a7422dc9cb"
+    appSecret "6f8d89bbb75fd26ab35148e8015ddc27"
+    ShareSDK {
+        devInfo {
+            Wechat {
+                appId "wxxxxxxxxxxxxxx"
+                appSecret "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+                userName "gh_xxxxxxxxxxx"
+                path "pages/xxxx/xxxx.html?id=1"
+                withShareTicket true
+                miniprogramType 2
+            }
+            WechatMoments {
+                appId "wxxxxxxxxxxxxxx"
+                appSecret "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+            }
+
+        }
+    }
 }

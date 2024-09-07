@@ -1,5 +1,6 @@
 package com.example.wanandroid_zzm.ui.login
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.wanandroid_zzm.bean.User
@@ -17,6 +18,7 @@ class LoginViewModel : BaseViewModel() {
      */
     fun login(username: String, password: String): LiveData<User?> {
         launchUI(errorBlock = { code, error ->
+            Log.d("code",code.toString())
             TipsToast.showTips(error)
             loginLiveData.value = null
         }) {

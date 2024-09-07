@@ -12,6 +12,7 @@ import android.os.SystemClock
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AlphaAnimation
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
@@ -269,6 +270,44 @@ val View.isInvisible: Boolean
 fun View.toggleVisibility() {
     visibility = if (visibility == View.GONE) View.VISIBLE else View.GONE
 }
+/**
+ * 显示view，带有渐显动画效果。
+ *
+ * @param duration 毫秒，动画持续时长，默认500毫秒。
+ */
+fun View.visibleAlphaAnimation(duration: Long = 500L) {
+    this.visibility = View.VISIBLE
+    this.startAnimation(AlphaAnimation(0f, 1f).apply {
+        this.duration = duration
+        fillAfter = true
+    })
+}
+
+/**
+ * 隐藏view，带有渐隐动画效果。
+ *
+ * @param duration 毫秒，动画持续时长，默认500毫秒。
+ */
+fun View?.goneAlphaAnimation(duration: Long = 500L) {
+    this?.visibility = View.GONE
+    this?.startAnimation(AlphaAnimation(1f, 0f).apply {
+        this.duration = duration
+        fillAfter = true
+    })
+}
+/**
+ * 占位隐藏view，带有渐隐动画效果。
+ *
+ * @param duration 毫秒，动画持续时长，默认500毫秒。
+ */
+fun View?.invisibleAlphaAnimation(duration: Long = 500L) {
+    this?.visibility = View.INVISIBLE
+    this?.startAnimation(AlphaAnimation(1f, 0f).apply {
+        this.duration = duration
+        fillAfter = true
+    })
+}
+
 
 /**
  * 设置View高度，限制在min和max范围之内
@@ -412,7 +451,10 @@ fun View.layoutGravity(gravity: Int) {
     invalidate()
 }
 
+
 // 所有子View
 inline val ViewGroup.children
     get() = (0 until childCount).map { getChildAt(it) }
+
+
 

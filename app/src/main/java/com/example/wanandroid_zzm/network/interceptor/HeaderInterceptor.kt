@@ -26,7 +26,8 @@ class HeaderInterceptor : Interceptor {
         if (!host.isNullOrEmpty()  && (url.contains(COLLECTION_WEBSITE)
                         || url.contains(NOT_COLLECTION_WEBSITE)
                         || url.contains(ARTICLE_WEBSITE)
-                        || url.contains(COIN_WEBSITE))) {
+                        || url.contains(COIN_WEBSITE)
+                        ||url.contains(UserInfo))) {
             val cookies = CookiesManager.getCookies()
 
             LogUtil.e("CookiesInterceptor:cookies:$cookies")

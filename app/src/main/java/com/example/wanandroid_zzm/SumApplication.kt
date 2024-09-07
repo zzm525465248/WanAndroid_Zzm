@@ -5,7 +5,10 @@ import android.app.ActivityManager
 import android.app.Application
 import android.content.Context
 import android.os.Bundle
+import com.drake.brv.utils.BRV
 import com.example.wanandroid_zzm.base.SumAppHelper
+import com.example.wanandroid_zzm.utils.LaunchTimer
+import com.sum.framework.toast.TipsToast
 import com.tencent.mmkv.MMKV
 
 
@@ -15,9 +18,10 @@ import com.tencent.mmkv.MMKV
  * @desc   应用类
  */
 class SumApplication : Application() {
-
+    // 应用最早回调的生命周期方法
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
+         LaunchTimer.startRecord()
 //        SPUtils.getInstance("SumTea")
 //        AppExecutors.cpuIO.execute(Runnable {
 //            MultiDex.install(base)
@@ -33,11 +37,14 @@ class SumApplication : Application() {
         super.onCreate()
         SumAppHelper.init(this,false)
         MMKV.initialize(this)
+
+        //BRV初始化
+          BRV.modelId=BR.m
 //        //注册APP前后台切换监听
 //        appFrontBackRegister()
 //        // App启动立即注册监听
 //        registerActivityLifecycle()
-//        TipsToast.init(this)
+          TipsToast.init(this)
 //
 //        //1.启动器：TaskDispatcher初始化
 //        TaskDispatcher.init(this)

@@ -1,6 +1,9 @@
 package com.example.wanandroid_zzm
 
 import android.os.Bundle
+import android.util.Log
+import android.view.ViewTreeObserver
+import android.view.Window
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -8,6 +11,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.wanandroid_zzm.databinding.ActivityMainBinding
+import com.sum.framework.utils.StatusBarSettingHelper
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,5 +35,18 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        supportActionBar!!.hide()
+        StatusBarSettingHelper.setStatusBarTranslucent(this)
+        StatusBarSettingHelper.statusBarLightMode(this, true)
+        binding.navView.viewTreeObserver.addOnDrawListener(object :ViewTreeObserver.OnPreDrawListener,
+            ViewTreeObserver.OnDrawListener {
+            override fun onPreDraw(): Boolean {
+               return  false
+            }
+
+            override fun onDraw() {
+
+            }
+        })
     }
 }

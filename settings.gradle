@@ -3,13 +3,24 @@ pluginManagement {
         gradlePluginPortal()
         google()
         mavenCentral()
+        maven { url=uri("https://www.jitpack.io")
+
+
+        }
+        maven {
+            url "https://mvn.mob.com/android"
+        }
     }
 }
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
     repositories {
         google()
         mavenCentral()
+        maven { url=uri("https://www.jitpack.io")}
+        maven {
+            url "https://mvn.mob.com/android"
+        }
     }
 }
 rootProject.name = "WanAndroid_Zzm"

@@ -2,14 +2,14 @@ package com.example.wanandroid_zzm.bean
 
 data class ArticleList(
     val curPage: Int?,
-    val datas: MutableList<Data>? = mutableListOf(),
+    val datas: MutableList<ArticleListData>? = mutableListOf(),
     val offset: Int?,
     val over: Boolean?,
     val pageCount: Int?,
     val size: Int?,
     val total: Int?
 ) {
-    data class Data(
+    data class ArticleListData(
         val adminAdd: Boolean?,
         val apkLink: String?,
         val audit: Int?,
