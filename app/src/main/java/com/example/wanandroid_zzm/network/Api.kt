@@ -61,4 +61,20 @@ interface Api {
     @GET("/user/lg/userinfo/json")
     suspend fun getUserInfo():BaseResponse<UserInfoBean>
 
+    /**
+     * 获取收藏列表
+     */
+    @GET("/lg/collect/list/{page}/json")
+    suspend fun getCollectList(
+        @Path("page") page:Int
+    ):BaseResponse<ArticleList>
+
+    /**
+     * 导航
+     */
+    @GET("/navi/json")
+    suspend fun getNaviList():BaseResponse<MutableList<NaviBean>>
+
+
+
 }

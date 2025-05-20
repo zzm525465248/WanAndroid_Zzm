@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">WanAndroid_Zzm</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">首页</string>
+    <string name="title_dashboard">分类</string>
+    <string name="title_notifications">我的</string>
     <string name="default_loading">加载中...</string>
 
     <item name="click_debounce_action" type="id" />

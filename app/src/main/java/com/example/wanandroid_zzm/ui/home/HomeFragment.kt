@@ -41,8 +41,6 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding,HomeViewModel>()
     override fun initView(view: View, savedInstanceState: Bundle?) {
             getUiData()
             initClick()
-
-
     }
 
     override fun initData() {
@@ -50,6 +48,8 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding,HomeViewModel>()
         mBinding!!.rvArtList.linear().divider {
             setDivider(10,true)
         }
+        //从fm中调用
+        mViewModel.ArticleListFlow(1,294)
         //项目列表
         mViewModel.articleListLiveData.observe(this){data ->
             mBinding!!.rvArtList.setup {
@@ -58,10 +58,7 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding,HomeViewModel>()
                 onBind {
                     //在第一个数据渲染完成时进行埋点操作
                     if(modelPosition==0&&!isRecord){
-                        Log.d("z","zz")
                         isRecord = true
-
-
                     }
 
                     val binding = getBinding<RvArticlelistBinding>() // ViewBinding/DataBinding都支持
@@ -73,7 +70,8 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding,HomeViewModel>()
                     val intent :Intent = Intent(this.context,ArticleDetailsActivity::class.java)
                     val bundle :Bundle=Bundle()
                     bundle.putString("url", data?.get(modelPosition)?.link)
-
+                    bundle.putBoolean("collect", data?.get(modelPosition)?.collect!!)
+                    bundle.putInt("id", data[modelPosition].id!!)
                     intent.putExtras(bundle)
                     startActivity(intent)
                 }
@@ -147,6 +145,9 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding,HomeViewModel>()
             }
         })
 
+        mBinding?.include1?.imageView4?.onClick {
+            Log.i("click","dddd")
+        }
 
 
     }

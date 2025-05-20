@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DevInfor>
+<Wechat AppId="wxxxxxxxxxxxxxx" AppSecret="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" UserName="gh_xxxxxxxxxxx" Path="pages/xxxx/xxxx.html?id=1" WithShareTicket="true" MiniprogramType="2" />
+<WechatMoments AppId="wxxxxxxxxxxxxxx" AppSecret="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" />
+</DevInfor>

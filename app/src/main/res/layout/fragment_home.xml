@@ -18,7 +18,9 @@
       android:layout_height="wrap_content"
       app:elevation="0dp">
 
-   <include layout="@layout/view_search"
+   <include
+       android:id="@+id/include1"
+       layout="@layout/view_search"
        />
    <com.youth.banner.Banner
        app:layout_scrollFlags="scroll|enterAlwaysCollapsed"

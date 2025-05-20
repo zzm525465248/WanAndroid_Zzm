@@ -1,31 +1,30 @@
 package com.example.wanandroid_zzm
 
-import android.app.Activity
-import android.app.ActivityManager
 import android.app.Application
 import android.content.Context
-import android.os.Bundle
-import com.drake.brv.utils.BRV
-import com.example.wanandroid_zzm.base.SumAppHelper
+import androidx.multidex.MultiDex
+import com.example.wanandroid_zzm.utils.AppExecutors
 import com.example.wanandroid_zzm.utils.LaunchTimer
 import com.sum.framework.toast.TipsToast
-import com.tencent.mmkv.MMKV
+import com.sum.stater.dispatcher.TaskDispatcher
+import com.sum.tea.task.InitAppManagerTask
+import com.sum.tea.task.InitBRvTask
+import com.sum.tea.task.InitMmkvTask
+import com.sum.tea.task.InitSumHelperTask
 
 
 /**
- * @author mingyan.su
- * @date   2023/2/9 23:19
- * @desc   应用类
+
  */
-class SumApplication : Application() {
+class Application : Application() {
     // 应用最早回调的生命周期方法
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
          LaunchTimer.startRecord()
 //        SPUtils.getInstance("SumTea")
-//        AppExecutors.cpuIO.execute(Runnable {
-//            MultiDex.install(base)
-//        })
+       AppExecutors.cpuIO.execute(Runnable {
+             MultiDex.install(base)
+        })
     }
 
     // 复写返回this
@@ -35,32 +34,31 @@ class SumApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        SumAppHelper.init(this,false)
-        MMKV.initialize(this)
+//        SumAppHelper.init(this,false)
+//        MMKV.initialize(this)
 
         //BRV初始化
-          BRV.modelId=BR.m
+//          BRV.modelId=BR.m
 //        //注册APP前后台切换监听
 //        appFrontBackRegister()
 //        // App启动立即注册监听
 //        registerActivityLifecycle()
           TipsToast.init(this)
 //
-//        //1.启动器：TaskDispatcher初始化
-//        TaskDispatcher.init(this)
-//        //2.创建dispatcher实例
-//        val dispatcher: TaskDispatcher = TaskDispatcher.createInstance()
-//
-//        //3.添加任务并且启动任务
-//        dispatcher.addTask(InitSumHelperTask(this))
-//                .addTask(InitMmkvTask())
-//                .addTask(InitAppManagerTask())
-//                .addTask(InitRefreshLayoutTask())
-//                .addTask(InitArouterTask())
-//                .start()
-//
-//        //4.等待，需要等待的方法执行完才可以往下执行
-//        dispatcher.await()
+        //1.启动器：TaskDispatcher初始化
+        TaskDispatcher.init(this)
+        //2.创建dispatcher实例
+        val dispatcher: TaskDispatcher = TaskDispatcher.createInstance()
+
+        //3.添加任务并且启动任务
+        dispatcher.addTask(InitSumHelperTask(this))
+                .addTask(InitMmkvTask())
+                .addTask(InitAppManagerTask())
+                .addTask(InitBRvTask())
+                .start()
+
+        //4.等待，需要等待的方法执行完才可以往下执行
+        dispatcher.await()
 
         // TraceView
 //        Debug.startMethodTracing() // 开始记录
@@ -110,7 +108,7 @@ class SumApplication : Application() {
 //            }
 //
 //            override fun onActivityCreated(activity: Activity, p1: Bundle?) {
-//                ActivityManager.push(activity)
+//
 //            }
 //
 //            override fun onActivityResumed(activity: Activity) {

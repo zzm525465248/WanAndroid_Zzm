@@ -19,6 +19,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -51,6 +52,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.4.1'
     implementation 'androidx.navigation:navigation-ui-ktx:2.4.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
@@ -76,6 +78,12 @@ dependencies {
     def eventbus_version = '3.2.0'
     implementation "org.greenrobot:eventbus:$eventbus_version"
     kapt "org.greenrobot:eventbus-annotation-processor:$eventbus_version"
+
+    implementation 'com.github.getActivity:ShapeView:9.2'
+
+    implementation 'com.github.getActivity:ShapeDrawable:3.2'
+
+    implementation 'androidx.multidex:multidex:2.0.1'
 }
 
 kapt {

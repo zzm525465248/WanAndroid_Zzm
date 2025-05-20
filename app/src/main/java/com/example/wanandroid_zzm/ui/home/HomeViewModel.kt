@@ -34,6 +34,20 @@ class HomeViewModel : BaseViewModel() {
        })
         return  articleListLiveData
     }
+    fun ArticleListFlow(page: Int, cId: Int){
+        launchFlow(errorCall = object : IApiErrorCallback{
+            override fun onError(code: Int?, error: String?) {
+                super.onError(code, error)
+            }
+
+            override fun onLoginFail(code: Int?, error: String?) {
+                super.onLoginFail(code, error)
+            }
+        }, requestCall = {ApiManager.api.getArticleList(page,cId)},null, successBlock = {
+            //数据获取成功
+            Log.d("flow_test",it?.size.toString())
+        })
+    }
 
     //获取tab分类
     fun getClassArticle() : LiveData<MutableList<ClassArticle>?>{

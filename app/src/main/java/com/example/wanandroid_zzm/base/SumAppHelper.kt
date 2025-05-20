@@ -3,9 +3,7 @@ package com.example.wanandroid_zzm.base
 import android.app.Application
 
 /**
- * @author mingyan.su
- * @date   2023/3/2 16:10
- * @desc   提供应用环境
+
  */
 object SumAppHelper {
     private lateinit var app: Application

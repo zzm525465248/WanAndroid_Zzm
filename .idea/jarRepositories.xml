@@ -16,5 +16,10 @@
       <option name="name" value="MobSDK" />
       <option name="url" value="https://mvn.mob.com/android" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="FlySDK" />
+      <option name="name" value="FlySDK" />
+      <option name="url" value="https://mvn.zztfly.com/android" />
+    </remote-repository>
   </component>
 </project>
